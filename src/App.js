@@ -8,7 +8,7 @@ import NewGameButton from './components/NewGameButton/NewGameButton';
 class App extends Component {
   constructor(props) {
     super(props);
-    let colors = ['#155765', '#57652A', '#AB9353', '#4D2C3D'];
+    let colors = ['#899DA4', '#C93312', '#FAEFD1', '#DC863B'];
     this.state = {
       colors,
       code: this.genCode(colors.length),
