@@ -1,14 +1,21 @@
 .App {
-  text-align: center;
+  flex-flow: column;
+  align-self: flex-end;
+  
 }
 
 .App-header {
-  background-color: #222;
+  background-color: transparent;
   height: 50px;
-  padding: 20px;
-  color: white;
-  font-size: 40px;
+  padding: 10px;
+  color: grey;
+  font-size: 22px;
   text-align: center;
+  letter-spacing: 6px;
+  margin: 50px;
 }
 
+footer {
+  text-align: center;
+}
 

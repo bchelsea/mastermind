@@ -8,8 +8,13 @@ import NewGameButton from './components/NewGameButton/NewGameButton';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = this.getInitialState();
+  };
+  
+
+  getInitialState() {
     let colors = ['#899DA4', '#C93312', '#FAEFD1', '#DC863B'];
-    this.state = {
+    return {
       colors,
       code: this.genCode(colors.length),
       selColorIdx: 0,
@@ -19,8 +24,8 @@ class App extends Component {
 
   getNewGuess() {
     return {
-      // code: [null, null, null, null],
-      code: [3, 2, 1, 0], // for testing purposes
+      code: [null, null, null, null],
+      // code: [3, 2, 1, 0], // for testing purposes
       score: {
         perfect: 0,
         almost: 0
@@ -38,20 +43,43 @@ class App extends Component {
     return this.state.code.join() === this.state.guesses[lastGuess].code.join() ? lastGuess + 1 : 0;
   }
 
+
+  handleColorSelection = (colorIdx) => {
+    this.setState({selColorIdx: colorIdx});
+  }
+
+  handleNewGameClick = () => {
+    this.setState(this.getInitialState());
+  }
+
+  handleGuess = (guessIdx) => {
+    var guesses = [...this.state.guesses];
+    guesses[this.state.guesses.length - 1].code[guessIdx] = this.state.selColorIdx;
+    this.setState({
+    });
+  }
+
   render() {
     let winTries = this.getWinTries();
     return (
-      <div>
-        <header className="App-header">React Mastermind</header>
-        <GameBoard
-          guesses={this.state.guesses}
-          colors={this.state.colors}
-        />
-        <div>
-          <ColorPicker colors={this.state.colors} />
-          <NewGameButton />
+      <div className="App">
+          <header className="App-header">REACT MASTERMIND</header>
+          <div style={{display: "flex", justifyContent: "center"} }>
+            <GameBoard
+              guesses={this.state.guesses}
+              colors={this.state.colors}
+              handleGuess={this.handleGuess}
+            />
+            <div className="GameControls">
+              <ColorPicker 
+              handleColorSelection={this.handleColorSelection}
+              setColorIdx={this.state.selColorIdx}
+              colors={this.state.colors} />
+              <NewGameButton 
+              handleNewGameClick={this.handleNewGameClick}/>
+          </div>
         </div>
-        <footer>{(winTries ? `You Won in ${winTries} Guesses!` : 'Good Luck!')}</footer>
+          <footer>{(winTries ? `You Won in ${winTries} Guesses!` : 'Good Luck!')}</footer>
       </div>
     );
   }

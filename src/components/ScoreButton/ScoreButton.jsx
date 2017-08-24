@@ -1,10 +1,13 @@
 import React from 'react';
+import './ScoreButton';
 
 const ScoreButton = (props) => {
   return (
-    <button>
-      Score Guess
+    <div>
+    <button className="ScoreButton" style={{backgroundColor: "transparent"}}>
+    &#10004;
     </button>
+    </div>
   );
 }
 

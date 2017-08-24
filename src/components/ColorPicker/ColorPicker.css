@@ -1,0 +1,22 @@
+.ColorPicker {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    align-items: center;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+.GameControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.ColorPicker:hover {
+    opacity: .7;
+  }
+  
